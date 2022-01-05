@@ -13,7 +13,7 @@ class LiveDataViewModel : ViewModel() {
     /**
      *  利用Transformations.map 来对 [_userLiveData]的值执行处理并赋值给[userDetailLiveData]。
      */
-    val userDetailLiveData = Transformations.map(_userLiveData) { user ->
+     val userDetailLiveData = Transformations.map(_userLiveData) { user ->
         "name:${user.name},phone:${user.phone}"
     }
 
@@ -34,7 +34,7 @@ class LiveDataViewModel : ViewModel() {
     }
 
     /**
-     *  [switchLiveData] 的值 0：[_manUser] 1：[_womenUser] 2: [_kindUser]
+     *  [_switchLiveData] 的值 0：[_manUser] 1：[_womenUser] 2: [_kindUser]
      * 利用 [Transformations.switchMap] 来对所需要观察的livedata进行切换
      */
 
@@ -50,6 +50,7 @@ class LiveDataViewModel : ViewModel() {
             else -> _manUser
         }
     }
+
     fun changeObserverUser(i:Int){
         _switchLiveData.value=i
     }
