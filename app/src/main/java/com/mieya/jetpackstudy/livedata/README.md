@@ -8,3 +8,7 @@ A：首先postValue是通过给主线程post一个Runnable在主线程中调用s
 并且设置了一个变量来判断这个任务是否结束，如果没结束前再次调用postValue，那livedata会将这个值存起来，
 等主线程执行到post的Runnable后直接将存起来的值通过setValue进行赋值，同时也能解释为什么频繁调用postValue
 Livedata的version值和调用次数不匹配了，因为version的值是在setValue里面更新
+
+Q:Livedata的数据分发是粘性还是非粘性？为什么？
+A:是粘性的 因为在新增一个Observer的时候，内部默认的version是-1 这个值如果小于livedata的version，
+那livedata就会对它分发一次数据。
